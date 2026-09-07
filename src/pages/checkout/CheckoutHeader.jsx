@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import './checkout-header.css'
+import './CheckoutHeader.css'
 export function CheckoutHeader() {
   return (
     <>
@@ -13,8 +13,8 @@ export function CheckoutHeader() {
           </div>
 
           <div className="checkout-header-middle-section">
-            Checkout (<a className="return-to-home-link"
-              href="/">3 items</a>)
+            Checkout (<Link className="return-to-home-link"
+              to="/">3 items</Link>)
           </div>
 
           <div className="checkout-header-right-section">
