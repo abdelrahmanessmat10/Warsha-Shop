@@ -32,7 +32,7 @@ export function CheckoutPage({ cart }) {
     <>
       <title>Checkout</title>
 
-      <CheckoutHeader />
+      <CheckoutHeader cart={cart} />
 
 
       <div className="checkout-page">
