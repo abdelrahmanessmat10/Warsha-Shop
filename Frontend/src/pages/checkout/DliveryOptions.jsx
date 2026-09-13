@@ -23,7 +23,6 @@ export function DeliveryOption({ deliveryOptions, cartItem, loadCart }) {
 
           await loadCart();
 
-
         };
 
 
