@@ -1,8 +1,27 @@
 import { cartQuantity } from '../utils/cartQuantity';
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
+import { useState } from 'react';
 import './header.css'
+
 export function Header({ cart }) {
   const totalQuantity = cartQuantity(cart);
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (searchTerm.trim()) {
+      navigate(`/?search=${searchTerm}`);
+    } else {
+      navigate(`/`);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <>
       <div className="header">
@@ -16,9 +35,16 @@ export function Header({ cart }) {
         </div>
 
         <div className="middle-section">
-          <input className="search-bar" type="text" placeholder="Search" />
+          <input 
+            className="search-bar" 
+            type="text" 
+            placeholder="Search" 
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
 
-          <button className="search-button">
+          <button className="search-button" onClick={handleSearch}>
             <img className="search-icon" src="images/icons/search-icon.png" />
           </button>
         </div>
