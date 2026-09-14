@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useNavigate } from 'react-router';
+import { useNavigate, Link } from 'react-router';
 import { formatMoney } from "../../utils/money";
 
 export function PaymentSummary({ paymentSummary, loadCart }) {
@@ -44,7 +44,11 @@ export function PaymentSummary({ paymentSummary, loadCart }) {
             <div className="payment-summary-money">{formatMoney(paymentSummary.totalCostCents)}</div>
           </div>
 
-          <button className="place-order-button button-primary" onClick={createOrder}>
+          <button 
+            className="place-order-button button-primary" 
+            onClick={createOrder}
+            disabled={paymentSummary.totalItems === 0}
+          >
             Place your order
           </button>
 
