@@ -40,16 +40,6 @@ app.use('/api/reset', resetRoutes);
 app.use('/api/payment-summary', paymentSummaryRoutes);
 app.use('/api/auth', authRoutes);
 
-// Temporary route to migrate production database
-app.get('/api/migrate-db', async (req, res) => {
-  try {
-    await sequelize.sync({ alter: true });
-    res.send('Database migrated successfully');
-  } catch (error) {
-    res.status(500).send('Migration failed: ' + error.message);
-  }
-});
-
 // Serve static files from the dist folder
 app.use(express.static(path.join(__dirname, 'dist')));
 
