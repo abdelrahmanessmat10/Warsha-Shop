@@ -1,6 +1,8 @@
 import { Sequelize } from 'sequelize';
 import sqlJsAsSqlite3 from 'sql.js-as-sqlite3';
 import fs from 'fs';
+import 'pg';
+import 'pg-hstore';
 
 const isUsingRDS = process.env.RDS_HOSTNAME && process.env.RDS_USERNAME && process.env.RDS_PASSWORD;
 const dbType = process.env.DB_TYPE || 'mysql';
