@@ -14,6 +14,7 @@ export function Header({ cart }) {
     } else {
       navigate(`/`);
     }
+    setSearchTerm('');
   };
 
   const handleKeyDown = (e) => {
@@ -26,7 +27,7 @@ export function Header({ cart }) {
     <>
       <div className="header">
         <div className="left-section">
-          <Link to="/" className="header-link">
+          <Link to="/" className="header-link" onClick={() => setSearchTerm('')}>
             <img className="logo"
               src="images/logo-white.png" />
             <img className="mobile-logo"
