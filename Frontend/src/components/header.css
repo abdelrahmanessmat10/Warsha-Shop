@@ -97,10 +97,12 @@
 }
 
 .header .right-section {
-  width: 180px;
+  width: auto;
   flex-shrink: 0;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
 }
 
 .header .orders-link {
@@ -163,4 +165,17 @@
   .header .cart-quantity {
     right: 15px;
   }
+}
+
+.sign-in-btn {
+  color: white;
+  border: 1px solid white !important;
+  border-radius: 5px !important;
+  padding: 5px 15px !important;
+  transition: all 0.3s ease;
+}
+
+.sign-in-btn:hover {
+  background-color: white;
+  color: #084f2d;
 }

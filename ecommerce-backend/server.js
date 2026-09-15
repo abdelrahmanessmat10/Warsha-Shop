@@ -7,8 +7,10 @@ import productRoutes from './routes/products.js';
 import deliveryOptionRoutes from './routes/deliveryOptions.js';
 import cartItemRoutes from './routes/cartItems.js';
 import orderRoutes from './routes/orders.js';
-import resetRoutes from './routes/reset.js';
+import authRoutes from './routes/auth.js';
 import paymentSummaryRoutes from './routes/paymentSummary.js';
+import resetRoutes from './routes/reset.js';
+import { User } from './models/User.js';
 import { Product } from './models/Product.js';
 import { DeliveryOption } from './models/DeliveryOption.js';
 import { CartItem } from './models/CartItem.js';
@@ -36,6 +38,7 @@ app.use('/api/cart-items', cartItemRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/reset', resetRoutes);
 app.use('/api/payment-summary', paymentSummaryRoutes);
+app.use('/api/auth', authRoutes);
 
 // Serve static files from the dist folder
 app.use(express.static(path.join(__dirname, 'dist')));
@@ -105,3 +108,4 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export default app;
+

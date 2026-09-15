@@ -26,17 +26,22 @@ export function OrdersPage({ cart, loadCart }) {
         <div className="page-title">Your Orders</div>
 
         <div className="orders-grid">
-          {orders.length > 0 && orders.map((order) => {
-            return (
-              <div key={order.id} className="order-container">
-
-                <OrderHeader order={order} />
-
-                <OrderDetailsGrid order={order} loadCart={loadCart} />
-
-              </div>
-            );
-          })}
+          {orders.length === 0 ? (
+            <div className="empty-orders">
+              <h2>You haven't created any order yet.</h2>
+              <p>Looks like you haven't bought anything yet. Explore our products and place your first order!</p>
+              <Link to="/" className="auth-submit-btn empty-btn">Go to Home Page</Link>
+            </div>
+          ) : (
+            orders.map((order) => {
+              return (
+                <div key={order.id} className="order-container">
+                  <OrderHeader order={order} />
+                  <OrderDetailsGrid order={order} loadCart={loadCart} />
+                </div>
+              );
+            })
+          )}
         </div>
       </div>
     </>

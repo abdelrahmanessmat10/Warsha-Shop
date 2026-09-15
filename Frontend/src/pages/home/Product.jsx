@@ -1,14 +1,23 @@
 import axios from "axios";
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { formatMoney } from "../../utils/money";
-
+import { AuthContext } from "../../contexts/AuthContext";
+import { Link } from "react-router";
 
 export function Product({ product, loadCart }) {
+  const { token } = useContext(AuthContext);
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
+  const [authError, setAuthError] = useState(false);
   const timeoutId = useRef(null);
 
   const addToCart = async () => {
+    if (!token) {
+      setAuthError(true);
+      if (timeoutId.current) clearTimeout(timeoutId.current);
+      timeoutId.current = setTimeout(() => setAuthError(false), 3000);
+      return;
+    }
     await axios.post('/api/cart-items', {
       productId: product.id,
       quantity
@@ -71,9 +80,28 @@ export function Product({ product, loadCart }) {
 
       <div className="product-spacer"></div>
 
-      <div className="added-to-cart" style={{ opacity: added ? 1 : 0 }}>
-        <img src="images/icons/checkmark.png" />
-        Added
+      <div className="message-container" style={{ height: '27px', marginBottom: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        {authError ? (
+          <div className="auth-error-msg" style={{ 
+            opacity: authError ? 1 : 0, 
+            backgroundColor: '#eaf4ee',
+            border: '1px solid #1a9e5f',
+            borderRadius: '5px',
+            padding: '2px 8px',
+            color: '#084f2d', 
+            fontSize: '12px', 
+            textAlign: 'center',
+            transition: 'opacity 0.3s',
+            width: '100%'
+          }}>
+            Please <Link to="/login" style={{ color: '#1a9e5f', fontWeight: 'bold', textDecoration: 'underline' }}>log in</Link> to add items.
+          </div>
+        ) : (
+          <div className="added-to-cart" style={{ opacity: added ? 1 : 0, margin: 0 }}>
+            <img src="images/icons/checkmark.png" />
+            Added
+          </div>
+        )}
       </div>
 
       <button className="add-to-cart-button button-primary" onClick={addToCart}>

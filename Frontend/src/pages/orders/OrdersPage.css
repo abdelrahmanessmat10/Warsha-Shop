@@ -218,3 +218,27 @@
     padding: 12px;
   }
 }
+
+.empty-orders {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.empty-orders h2 {
+  color: #084f2d;
+  margin-bottom: 15px;
+}
+
+.empty-orders p {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.empty-btn {
+  display: inline-block;
+  max-width: 200px;
+  text-decoration: none;
+}

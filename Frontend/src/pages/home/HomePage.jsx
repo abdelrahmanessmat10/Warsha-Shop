@@ -28,7 +28,13 @@ export function HomePage({ cart, loadCart }) {
       <Header cart={cart} />
 
       <div className="home-page">
-        <ProductsGrid products={products} loadCart={loadCart} />
+        {products.length === 0 ? (
+          <div className="empty-search-message" style={{ textAlign: 'center', marginTop: '100px', fontSize: '18px', color: '#555' }}>
+            No items found matching your search for: <span style={{ fontWeight: 'bold', color: '#084f2d' }}>"{search}"</span>
+          </div>
+        ) : (
+          <ProductsGrid products={products} loadCart={loadCart} />
+        )}
       </div>
     </>
   );
