@@ -28,9 +28,7 @@ const __dirname = path.dirname(__filename);
 app.use(cors());
 app.use(express.json());
 
-// Serve images from the images folder
-app.use('/images', express.static(path.join(__dirname, 'images')));
-
+// Images are now served via the dist folder (frontend static assets)
 // Use routes
 app.use('/api/products', productRoutes);
 app.use('/api/delivery-options', deliveryOptionRoutes);
