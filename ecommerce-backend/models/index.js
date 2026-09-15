@@ -20,6 +20,12 @@ if (isUsingRDS) {
     host: process.env.RDS_HOSTNAME,
     port: process.env.RDS_PORT || defaultPort,
     dialect: dbType,
+    dialectOptions: dbType === 'postgres' ? {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    } : {},
     logging: false
   });
 } else {
