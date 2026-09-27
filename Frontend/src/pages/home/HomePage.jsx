@@ -23,7 +23,7 @@ export function HomePage({ cart, loadCart }) {
 
   return (
     <>
-      <title>Ecommerce Project</title>
+      <title>Warsha Shop</title>
 
       <Header cart={cart} />
 
