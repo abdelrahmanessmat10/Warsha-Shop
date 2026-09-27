@@ -40,6 +40,11 @@
    means when the screen width is 575px or less, different
    styles (inside the {...}) will be applied. */
 @media (max-width: 575px) {
+  .checkout-header {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
   .checkout-header .checkout-header-left-section {
     width: auto;
   }
@@ -50,7 +55,7 @@
 
   .checkout-header .mobile-logo {
     display: inline-block;
-    height: 50px;
+    height: 36px;
   }
 }
 

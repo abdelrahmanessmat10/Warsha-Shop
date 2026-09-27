@@ -2,6 +2,12 @@
   margin-top: 60px;
 }
 
+@media (max-width: 675px) {
+  .home-page {
+    margin-top: 96px;
+  }
+}
+
 .home-page .products-grid {
   display: grid;
 
@@ -62,6 +68,12 @@
 @media (max-width: 450px) {
   .home-page .products-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 575px) {
+  .home-page .product-container {
+    padding: 24px 16px 20px 16px;
   }
 }
 
